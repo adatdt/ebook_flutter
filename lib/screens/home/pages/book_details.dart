@@ -37,12 +37,178 @@ class BookDetail extends StatelessWidget {
           ));
     }
 
+    Widget infoDescription() {
+      return Container(
+        height: 60,
+        margin: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+        decoration: BoxDecoration(
+            color: greyColorInfo, borderRadius: BorderRadius.circular(9)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                Text(
+                  'rating',
+                  style: mediumText10.copyWith(color: deviderColor),
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  '4.8',
+                  style: semiBoldText12.copyWith(color: blackColor),
+                )
+              ],
+            ),
+            VerticalDivider(
+              color: deviderColor,
+              thickness: 1,
+            ),
+            Column(
+              children: [
+                Text(
+                  'number of pages',
+                  style: mediumText10.copyWith(color: deviderColor),
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  '180 Page',
+                  style: semiBoldText12.copyWith(color: blackColor),
+                )
+              ],
+            ),
+            VerticalDivider(
+              color: deviderColor,
+              thickness: 1,
+            ),
+            Column(
+              children: [
+                Text(
+                  'language',
+                  style: mediumText10.copyWith(color: deviderColor),
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  'ENG',
+                  style: semiBoldText12.copyWith(color: blackColor),
+                )
+              ],
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget saveButton() {
+      return Positioned(
+        top: 400,
+        right: 30,
+        child: Container(
+          height: 50,
+          padding: EdgeInsets.symmetric(vertical: 6),
+          width: 50,
+          decoration: BoxDecoration(color: greenColor, shape: BoxShape.circle),
+          child: Image.asset('assets/icons/icon-save.png'),
+        ),
+      );
+    }
+
+    Widget bottonReadNow() {
+      return Container(
+        height: 50,
+        width: double.infinity,
+        margin: EdgeInsets.only(top: 30),
+        child: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+              backgroundColor: greenColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30))),
+          child: Text(
+            'Read Now',
+            style: semiBoldText20.copyWith(color: whiteColor),
+          ),
+        ),
+      );
+    }
+
+    Widget description() {
+      return Container(
+        margin: EdgeInsets.only(top: 50),
+        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        decoration: BoxDecoration(
+            color: whiteColor,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "enchancement",
+                        style: semiBoldText20.copyWith(color: blackColor),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        "Guy Kawasaki",
+                        style:
+                            mediumText14.copyWith(color: Colors.grey.shade300),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  'free access',
+                  style: mediumText14.copyWith(color: greenColor),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              "description",
+              style: semiBoldText14.copyWith(color: blackColor),
+            ),
+            SizedBox(
+              height: 6,
+            ),
+            Text(
+              "description",
+              style: regularText12.copyWith(color: Colors.grey.shade400),
+            ),
+            infoDescription(),
+            bottonReadNow(),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: ListView(
         children: [
-          Column(
-            children: [header(), bookImage()],
+          Stack(
+            children: [
+              Column(
+                children: [header(), bookImage(), description()],
+              ),
+              saveButton()
+            ],
           )
         ],
       ),
